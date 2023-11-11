@@ -20,7 +20,7 @@ As an example here, we take the *aqueous solubility* of small molecules and proj
 ## Dataset
 
 We use the dataset from [Huuskonen], which was evaluated to predict the aqueous solubility of small molecules. 
-This dataset contains 1,025 small molecules defined in MDL Molfile format and classified into 417, 402, and 206 categories according to low, medium, and high solubility, respectively.
+This dataset contains 1,025 small molecules of organic compounds defined in `MDL Molfile` format and classified into 417, 402, and 206 categories according to low, medium, and high solubility, respectively.
 
 The Python cheminformatics package `RDKit` was used to calculate molecular descriptors.
 Of all molecular descriptors defined in `RDKit`, 183 molecular descriptors were used as features after excluding descriptors containing missing values.
