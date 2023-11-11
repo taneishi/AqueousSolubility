@@ -5,7 +5,7 @@
 *Small molecules* are still a large percentage of *drug discovery* candidates due to their ease of handling and use.
 Screening is one of the initial steps in drug discovery for small molecules, and *virtual screening* is a computational approach to this process.
 
-Virtual screening used *molecular descriptors* calculated from the structure of a compound as features, prior to the introduction of *deep learning*, DL.
+Prior to the introduction of *deep learning*, DL, virtual screening used *molecular descriptors* calculated from the structure of a compound as features.
 Molecular descriptors are mainly composed of two components: experimental measurements such as physicochemical properties, and theoretically defined quantities such as geometric properties.
 In particular, molecular descriptors that are determined from the existence and frequency of substructures, which is one of the geometrical properties, are called *chemical fingerprints*.
 
@@ -15,7 +15,7 @@ The concept that features represent in the virtual screening of small molecule d
 As computing has progressed, a large number of compounds and features have been used for the representation of druglikeness by molecular descriptors.
 There have been attempts to represent more complex properties of compounds by molecular descriptors, and *quantitative structure-activity relationship*, QSAR, which seeks correlation with biological acivities essential for small molecule drugs,is an early application of machine learning.
 
-As an example here, we take the *aqueous solubility* of small molecules and project the molecular descriptors using PCA, to visually represent their properties.
+As an example here, we take the *aqueous solubility* of small molecules and project the molecular descriptors using *principal component analysis*, PCA, to visually represent their properties.
 
 ## Dataset
 
