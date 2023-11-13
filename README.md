@@ -13,7 +13,7 @@ An early attempt to characterize *small molecule drugs* using molecular descript
 This is a proposal to represent the *absorption*, *distribution*, *metabolism*, and *excretion*, so-called ADME, of mainly oral drugs by using the *hydrogen bond donors*, *hydrogen bond acceptors*, *molecular weight*, and *partition coefficient* of small molecules as the features.
 The concept that features represent in the virtual screening of small molecule drugs is called *druglikeness*, and ADME is considered to be a part of it.
 As computing has progressed, a large number of compounds and features have been used for the representation of druglikeness by molecular descriptors.
-There have been attempts to represent more complex properties of compounds by molecular descriptors, and *quantitative structure-activity relationship*, QSAR, which seeks correlation with biological acivities essential for small molecule drugs,is an early application of machine learning.
+There have been attempts to represent more complex properties of compounds by molecular descriptors, and *quantitative structure-activity relationship*, QSAR, which seeks correlation with biological acivities essential for small molecule drugs, is an early application of machine learning.
 
 As an example here, we take the *aqueous solubility* of small molecules and project the molecular descriptors using *principal component analysis*, PCA, to visually represent their properties.
 
