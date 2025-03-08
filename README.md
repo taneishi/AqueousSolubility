@@ -26,5 +26,5 @@ Here, we project the representation of compounds by high-dimensional molecular d
 
 Compounds with high, medium, and low solubilities form a cluster in the projected space, respectively. Among these, especially for compounds with high and low solubility, we can see that almost linear separation is possible by the two variables from the order of large variance. On the other hand, it would be necessary to try more variables or classification methods to classify the clusters with medium solubility.
 
-[^Lipinski] C.A. Lipinski, et al., *Experimental and computational approaches to estimate solubility and permeability in drug discovery and development settings*, **Adv Drug Deliv Rev**, 23, pp.3-25, 1997.
-[^Huuskonen] J. Huuskonen, *Estimation of Aqueous Solubility for a Diverse Set of Organic Compounds Based on Molecular Topology*, **J Chem Inf Comput Sci**, 40, 3, pp.773–777, 2000.
+[^Lipinski]: C.A. Lipinski, et al., *Experimental and computational approaches to estimate solubility and permeability in drug discovery and development settings*, **Adv Drug Deliv Rev**, 23, pp.3-25, 1997.
+[^Huuskonen]: J. Huuskonen, *Estimation of Aqueous Solubility for a Diverse Set of Organic Compounds Based on Molecular Topology*, **J Chem Inf Comput Sci**, 40, 3, pp.773–777, 2000.
