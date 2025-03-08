@@ -1,56 +1,30 @@
-# Representation of aqueous solubility of small molecules using PCA
+# Representation of Solubility of Small Molecules
 
 ## Introduction
 
-*Small molecules* are still a large percentage of *drug discovery* candidates due to their ease of handling and use.
-Screening is one of the initial steps in drug discovery for small molecules, and *virtual screening* is a computational approach to this process.
+*Small molecules* are still a large percentage of *drug discovery* candidate substances due to their ease of handling and use. In drug discovery involving small molecules, there is a process called *screening* that selects drug candidate compounds in the initial steps from a vast number of chemical structures to be investigated. *Virtual screening* is a method that accelerates this process by computing.
 
-Prior to the introduction of *deep learning*, DL, virtual screening used *molecular descriptors* calculated from the structure of a compound as features.
-Molecular descriptors are mainly composed of two components: experimental measurements such as physicochemical properties, and theoretically defined quantities such as geometric properties.
-In particular, molecular descriptors that are determined from the existence and frequency of substructures, which is one of the geometrical properties, are called *chemical fingerprints*.
+In early virtual screening, *molecular descriptors* based on chemical structures were often used to characterize small molecule drugs. For example, one of such attempts is the *rule of five*, which is a criterion proposed by *Lipinski et al.* in 1997 to evaluate absorption and permeation of a chemical compound[^Lipinski]. 
 
-An early attempt to characterize *small molecule drugs* using molecular descriptors is known as the *rule of five* proposed by Lipinski et al. in 1997.
-This is a proposal to represent the *absorption*, *distribution*, *metabolism*, and *excretion*, so-called ADME, of mainly oral drugs by using the *hydrogen bond donors*, *hydrogen bond acceptors*, *molecular weight*, and *partition coefficient* of small molecules as the features.
-The concept that features represent in the virtual screening of small molecule drugs is called *druglikeness*, and ADME is considered to be a part of it.
-As computing has progressed, a large number of compounds and features have been used for the representation of druglikeness by molecular descriptors.
-There have been attempts to represent more complex properties of compounds by molecular descriptors, and *quantitative structure-activity relationship*, QSAR, which seeks correlation with biological acivities essential for small molecule drugs, is an early application of machine learning.
-
-As an example here, we take the *aqueous solubility* of small molecules and project the molecular descriptors using *principal component analysis*, PCA, to visually represent their properties.
+Here, as a simple example of charcterize small molecules by molecular descriptors, we take the *solubility* of a chemical compound as the target index and project the molecular descriptors of each compound by *principal component analysis*, PCA, to visually represent that the compounds can be classified by the index.
 
 ## Dataset
 
-We use the dataset from [Huuskonen], which was evaluated to predict the aqueous solubility of small molecules. 
-This dataset contains 1,025 small molecules of organic compounds defined in `MDL Molfile` format and classified into 417, 402, and 206 categories according to low, medium, and high solubility, respectively.
+We use the dataset from [^Huuskonen], which evaluates the solubility of small molecules. This dataset contains 1,025 small molecules of organic compounds defined in the `MDL Molfile` format, with 417, 402, and 206 chemical compounds classified for low, medium, and high solubility, respectively.
 
-The Python cheminformatics package `RDKit` was used to calculate molecular descriptors.
-Of all molecular descriptors defined in `RDKit`, 183 molecular descriptors were used as features after excluding descriptors containing missing values.
-Thus, each compound is represented by a real vector of 183 dimensions and the dataset is a $(1025 \times 183)$-matrix.
+The Python *cheminformatics* package `RDKit` was used to calculate molecular descriptors. Among all molecular descriptors defined in `RDKit`, 183 molecular descriptors were used as *features*, excluding descriptors that contain missing values or have zero variance. Thus, each compound is represented by a real vector of 183 dimensions and the dataset is a $(1025 \times 183)$-matrix.
 
-## Methods
+## Projection and Classification
 
-PCA is the most fundamental *unsupervised* or *self-supervised learning*.
-Mathematically, it is based on the eigendecomposition of the covariance matrix, and is a linear method that gives a projection from the original coordinates to the coordinates that maximize the variance in each dimension.
-It is often used as the first choice in machine learning, especially in *visualization*, because it allows dimensionality reduction at a practical cost by extracting common features from a given dataset in high dimensions.
+PCA is a linear method that gives a projection from the original coordinates to the coordinates that maximize the variance in each dimension, and is one of the most fundamental methods of *unsupervised learning*. It is often used as the first choice in *machine learning*, especially for *visualization*, because it allows dimensionality reduction at a practical cost from a given dataset in high dimensions.
 
-Here, we investigate the possibility of classifying solubility using a linear method by projecting the higher-dimensional molecular descriptor representation of the compounds onto the coordinate with the largest variance.
+Here, we project the representation of compounds by high-dimensional molecular descriptors to the coordinate with the largest variance using PCA and investigate the possibility of classification by solubility labels. We performed PCA on the matrix of the given dataset and plotted the results by the two dimensions with the largest variance in Figure 1.
 
-## Results
+![projection](figure/solubility_PCA.png)
 
-PCA is performed on the matrix of the given dataset using *singular value decomposition* and the results plotted by the two dimensions with the largest variance are shown in Figure 1.
+**Figure 1. Relationship between the PCA projection of molecular descriptors of small molecules and solubility.**
 
-![Relationship between the PCA projection of molecular descriptors and aqueous solubility of small molecules.](figure/solubility_PCA.png)
+Compounds with high, medium, and low solubilities form a cluster in the projected space, respectively. Among these, especially for compounds with high and low solubility, we can see that almost linear separation is possible by the two variables from the order of large variance. On the other hand, it would be necessary to try more variables or classification methods to classify the clusters with medium solubility.
 
-**Figure 1. Relationship between the PCA projection of molecular descriptors and aqueous solubility of small molecules.**
-
-Compounds with high, medium, and low solubilities form clusters in the projected space, respectively.
-Especially for compounds with high and low solubility, they are almost linearly separable.
-
-## Furthermore
-
-Molecular descriptors were often used as input in the early DL applications, but as the DL model evolved, the model required more features, and chemical fingerprints such as *Morgan fingerprints* or *extended-connectivity fingerprints*, ECFP, which are defined based on graphs of chemical structures, are used as high-dimensional features to represent compounds, and high accuracy has been achieved.
-
-Because these chemical fingerprints based on graph structures have been effective, neural networks such as *graph convolutional networks*, GCN, which accept graph structures as input, were proposed as models for handling chemical compounds, without going through chemical fingerprints.
-
-## Reference
-
-- [Huuskonen] J. Huuskonen, *Estimation of Aqueous Solubility for a Diverse Set of Organic Compounds Based on Molecular Topology*, **J Chem Inf Comput Sci**, 40, 3, pp.773–777, 2000.
+[^Lipinski] C.A. Lipinski, et al., *Experimental and computational approaches to estimate solubility and permeability in drug discovery and development settings*, **Adv Drug Deliv Rev**, 23, pp.3-25, 1997.
+[^Huuskonen] J. Huuskonen, *Estimation of Aqueous Solubility for a Diverse Set of Organic Compounds Based on Molecular Topology*, **J Chem Inf Comput Sci**, 40, 3, pp.773–777, 2000.
