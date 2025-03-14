@@ -1,4 +1,4 @@
-# Representation of Solubility of Small Molecules
+# Classification of Solubility of Small Molecules
 
 ## Introduction
 
