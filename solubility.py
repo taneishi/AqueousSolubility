@@ -9,7 +9,7 @@ def plot_pca(T, labels):
     plt.figure(figsize=(5, 4))
     for i, (label, color) in enumerate(zip(sorted(set(labels)), ('green', 'gray', 'red'))):
         plt.scatter(T[labels == label, 0], T[labels == label, 1], label=label,
-                    marker=f'{i+1}', color=color, linewidth=1.0)
+                    marker=str(i+1), color=color, linewidth=1.0)
     plt.axline([0, 0], [1, 0], linestyle='--', linewidth=0.8, color='gray')
     plt.axline([0, 0], [0, 1], linestyle='--', linewidth=0.8, color='gray')
     plt.xlim(-10, 25)
